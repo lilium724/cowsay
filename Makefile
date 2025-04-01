@@ -6,7 +6,7 @@ SRC=./src/
 
 default: newcow
 
-newcow: $(BIN)newcow.o
+newcow: $(BIN)newcow.o $(BIN)parser.o
 	$(CC) -o $@ $^
 
 $(BIN)%.o : $(SRC)%.c
