@@ -15,7 +15,7 @@ void affiche_vache(char *eyes) {
 
 int main(int argc, char **argv) {
 	char text[100] = "";
-  char eyes[2] = "00";
+  char eyes[3] = "00";
 	parse_arguments(argc, argv, text, eyes);
 
 	printf("%s\n", text);
