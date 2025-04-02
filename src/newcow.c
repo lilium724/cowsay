@@ -4,13 +4,13 @@
 #include "parser.h"
 
 
-void affiche_vache() {
-	puts("\
+void affiche_vache(char *eyes) {
+	printf("\
    \\	^__^\n\
-    \\	(00)\\_______\n\
+    \\	(%s)\\_______\n\
         (__)\\	    )\\/\\\n\
 	   ||----w |\n\
-	   ||	  ||\n");
+	   ||	  ||\n", eyes);
 }
 
 int main(int argc, char **argv) {
@@ -19,6 +19,6 @@ int main(int argc, char **argv) {
 	parse_arguments(argc, argv, text, eyes);
 
 	printf("%s\n", text);
-  affiche_vache();
+  affiche_vache(eyes);
 	return 0;
 }
