@@ -4,7 +4,10 @@ CFLAGS=-Wall -g
 BIN=./bin/
 SRC=./src/
 
-default: newcow
+default: $(BIN) newcow
+
+$(BIN):
+	mkdir $(BIN)
 
 newcow: $(BIN)newcow.o $(BIN)parser.o
 	$(CC) -o $@ $^
