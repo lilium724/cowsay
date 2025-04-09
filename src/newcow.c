@@ -4,22 +4,24 @@
 #include "parser.h"
 
 
-void affiche_vache(char *eyes) {
+void affiche_vache(char *eyes, char *legs) {
 	printf("\
    \\	^__^\n\
     \\	(%s)\\_______\n\
         (__)\\	    )\\/\\\n\
 	   ||----w |\n\
-	   ||	  ||\n", eyes);
+	   ||	  ||\n\
+ %s\n ", eyes, legs);
 }
 
 int main(int argc, char **argv) {
 	char text[100] = "";
   	char eyes[3] = "00";
-	int ret_val = parse_arguments(argc, argv, text, eyes);
+	char legs[100] = "";
+	int ret_val = parse_arguments(argc, argv, text, eyes, legs);
 	if (ret_val == 0){
 		printf("%s\n", text);
-		affiche_vache(eyes);
+		affiche_vache(eyes, legs);
 	}
 	return ret_val;
 }
