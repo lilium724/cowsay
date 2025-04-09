@@ -42,13 +42,11 @@ int parse_arguments(int argc, char **argv, char *text, char eyes[static 3], char
         i++;
       }
     }
-    /* partie obselette car fait dans "bulle"
     if(parse_text) {
       strcat(text, argv[i]);
       if(i < argc - 1)
         strcat(text, " ");
     }
-    */
   }
   return 0;  
 }
