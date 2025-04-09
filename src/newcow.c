@@ -15,10 +15,11 @@ void affiche_vache(char *eyes) {
 
 int main(int argc, char **argv) {
 	char text[100] = "";
-  char eyes[3] = "00";
-	parse_arguments(argc, argv, text, eyes);
-
-	printf("%s\n", text);
-  affiche_vache(eyes);
-	return 0;
+  	char eyes[3] = "00";
+	int ret_val = parse_arguments(argc, argv, text, eyes);
+	if (ret_val == 0){
+		printf("%s\n", text);
+		affiche_vache(eyes);
+	}
+	return ret_val;
 }
