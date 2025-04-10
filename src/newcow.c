@@ -4,14 +4,14 @@
 #include "parser.h"
 
 
-void affiche_vache(char *eyes, char *legs) {
+void affiche_vache(char *eyes,char *stoned, char *legs) {
 	printf("\
    \\	^__^\n\
     \\	(%s)\\_______\n\
         (__)\\	    )\\/\\\n\
-	   ||----w |\n\
+	 %s ||----w |\n\
 	   ||	  ||\n\
- %s\n ", eyes, legs);
+ %s\n ", eyes, stoned, legs);
 }
 
 /*fonction qui crée et affiche la bulle de texte*/
@@ -31,10 +31,11 @@ int main(int argc, char **argv) {
 	char text[100] = "";
   	char eyes[3] = "00";
 	char legs[100] = "";
-	int ret_val = parse_arguments(argc, argv, text, eyes, legs);
+	char stoned[2]=" ";
+	int ret_val = parse_arguments(argc, argv, text, eyes, legs, stoned);
 	if (ret_val == 0){
 		bulle(text); /*affiche la bulle avec le texte*/
-		affiche_vache(eyes, legs);
+		affiche_vache(eyes, stoned, legs);
 	}
 	return ret_val;
 }
