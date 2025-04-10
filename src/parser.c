@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h> /*ajout de stdlib pour utiliser atoi*/
 
-int parse_arguments(int argc, char **argv, char *text, char eyes[static 3], char *legs, char *stoned) {
+int parse_arguments(int argc, char **argv, char *text, char eyes[static 3], char *legs, char *tongue) {
   int parse_text = 0;
   for(int i = 1; i < argc; i++) {
     if(!parse_text) {
@@ -23,7 +23,7 @@ int parse_arguments(int argc, char **argv, char *text, char eyes[static 3], char
         /*Option pour "Makes the cow appear thoroughly stoned."*/
         else if(argv[i][1]=='s'){ 
           strcpy(eyes, "**"); /*change les yeux de la vache*/
-          strcpy(stoned,"U");/*change la langue*/
+          strcpy(tongue,"U ");/*change la langue*/
         }
         /*action qui rallonge les pied de la vache*/
         else if (argv[i][1] == 't' || !strcmp(argv[i], "--tall")){ 
