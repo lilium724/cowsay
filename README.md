@@ -12,11 +12,9 @@ SYNOPSIS
     newcow -s bonjour
 
 DESCRIPTION
-       cowsay generates an ASCII-art picture of a cow saying something provided by the user. If run with no non-option arguments, it reads from standard input,
-       word-wraps the given message at about 40 columns, and prints the cow saying the given message on standard output.
+       cowsay generates an ASCII-art picture of a cow saying something provided by the user.
 
-       If any command-line arguments are left over after all switches have been processed, they become the cow’s message, instead of using standard input. Standard input
-       is ignored in this case.
+       If any command-line arguments are left over after all switches have been processed, they become the cow’s message.
 
 OPTIONS
        There are several provided modes which change the appearance of the cow depending on its particular emotional/physical state.
