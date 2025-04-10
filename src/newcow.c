@@ -8,10 +8,10 @@ void affiche_vache(char *eyes, char *tongue, char *legs) {
 	printf("\
    \\	^__^\n\
     \\	(%s)\\_______\n\
-        (__)\\	    )\\/\\\n\
+        (__)\\	    )\\/\\%s\n\
 	 %s||----w |\n\
 	   ||	  ||\n\
- %s\n ", eyes, tongue, legs);
+ %s\n ", eyes, "",tongue, legs);
 }
 
 /*fonction qui crée et affiche la bulle de texte*/
