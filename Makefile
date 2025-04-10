@@ -16,8 +16,6 @@ $(BIN):
 test: $(BIN)test.o $(BIN)parser.o
 	$(CC) -o $@ $^
 
-$(BIN)test.o : $(SRC)test.c
-	$(CC) $(CFLAGS) -Wno-incompatible-pointer-types-discards-qualifiers -c -o $@ $^
 
 newcow: $(BIN)newcow.o $(BIN)parser.o
 	$(CC) -o $@ $^
