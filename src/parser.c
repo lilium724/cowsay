@@ -6,8 +6,9 @@ int parse_arguments(int argc, char **argv, char *text, char eyes[static 3], char
   int parse_text = 0;
   for(int i = 1; i < argc; i++) {
     if(!parse_text) {
-      if(argv[i][0] != '-')
+      if(argv[i][0] != '-'){
         parse_text = 1;
+      }
       else {
         if(argv[i][1] == 'e' || !strcmp(argv[i], "--eyes")) {
           if(i == argc - 1) {
