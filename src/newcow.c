@@ -36,7 +36,7 @@ int main(int argc, char **argv) {
 	int ret_val = parse_arguments(argc, argv, text, eyes, legs, tongue, queue);
 	if (ret_val == 0){
 		bulle(text); /*affiche la bulle avec le texte*/
-		affiche_vache(eyes, queue, tongue, legs);
+		affiche_vache(eyes, tongue, legs, queue);
 	}
 	return ret_val;
 }
