@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
  
+/*teste branche*/
 void update () { 
     printf ( "\033[H\033[J" ); 
 }
