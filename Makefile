@@ -20,8 +20,11 @@ test: $(BIN)test.o $(BIN)parser.o
 newcow: $(BIN)newcow.o $(BIN)parser.o
 	$(CC) -o $@ $^
 
-$(BIN)%.o : $(SRC)%.c $(BIN)
-	$(CC) $(CFLAGS) -c -o $@ $< 
+wildcow: $(BIN)wildcow.o $(BIN)parser.o
+	$(CC) -o $@ $^
+
+$(BIN)%.o : $(SRC)%.c
+	$(CC) $(CFLAGS) -c -o $@ $^ 
 
 clean:
 	-@rm -f $(BIN)*
