@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h> /*ajout de stdlib pour utiliser atoi*/
 
-int parse_arguments(int argc, char **argv, char *text, char eyes[static 3], char *legs, char *tongue, char *queue) {
+int parse_arguments(int argc, char **argv, char *text, char eyes[static 3], int *legs, char *tongue, char *queue) {
   int parse_text = 0;
   for(int i = 1; i < argc; i++) {
     if(!parse_text) {
@@ -32,10 +32,7 @@ int parse_arguments(int argc, char **argv, char *text, char eyes[static 3], char
             fprintf(stderr, "L'option %s attend un argument!\n", argv[i]);
             return 1;
           }
-          
-          for (int y = 0; y < atoi(argv[i+1]); y++){ /*atoi converti un le string en int*/
-            strcat(legs, "          ||     ||\n ");/*ajoute un etage aux jambes*/
-          }
+         *legs = atoi(argv[i+1]); 
           i++;
         }
         else if (argv[i][1] == 'q'){
