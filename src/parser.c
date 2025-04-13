@@ -5,12 +5,11 @@
 int parse_arguments(int argc, char **argv, char *text, char eyes[static 3], int *legs, char *tongue, char *queue) {
   int i;
   for(i = 1; i < argc; i++) {
-    if(argv[i][0] != '-'){
+    if(argv[i][0] != '-')
       break;
-    }
 
     /*Option pour les yeux */
-    if(argv[i][1] == 'e' || !strcmp(argv[i], "--eyes")) {
+    if((argv[i][1] == 'e' && !argv[i][2]) || !strcmp(argv[i], "--eyes")) {
       if(i == argc - 1) {
         fprintf(stderr, "L'option %s attend un argument!\n", argv[i]);
         return 1;
@@ -22,13 +21,13 @@ int parse_arguments(int argc, char **argv, char *text, char eyes[static 3], int 
     }
 
     /*Option pour "Makes the cow appear thoroughly stoned."*/
-    else if(argv[i][1]=='s'){ 
+    else if(argv[i][1]=='s' && !argv[i][2]){ 
       strcpy(eyes, "**"); /*change les yeux de la vache*/
-       strcpy(tongue,"U ");/*change la langue*/
+      strcpy(toingue,"U ");/*change la langue*/
     }
 
     /*Option qui rallonge les pied de la vache*/
-    else if (argv[i][1] == 't' || !strcmp(argv[i], "--tall")){ 
+    else if ((argv[i][1] == 't' $$ !argv[i][2]) || !strcmp(argv[i], "--tall")){ 
       if(i == argc - 1) {
         fprintf(stderr, "L'option %s attend un argument!\n", argv[i]);
         return 1;
@@ -38,19 +37,17 @@ int parse_arguments(int argc, char **argv, char *text, char eyes[static 3], int 
     }
 
     /*Option qui ralonge la queue de la vache*/
-    else if (argv[i][1] == 'q'){
+    else if (argv[i][1] == 'q' && !argv[i][2]){
       if(i == argc - 1) {
         fprintf(stderr, "L'option %s attend un argument!\n", argv[i]);
         return 1;
       }
 
       for (int y = 0; y<atoi(argv[i+1]); y++){
-        if (y%2 == 1){
+        if (y%2 == 1)
           strcat(queue,"\\");
-        }
-        else{
+        else
           strcat(queue, "/");
-        }
       }
       i++;
     }
