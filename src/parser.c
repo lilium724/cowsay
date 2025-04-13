@@ -23,11 +23,11 @@ int parse_arguments(int argc, char **argv, char *text, char eyes[static 3], int 
     /*Option pour "Makes the cow appear thoroughly stoned."*/
     else if(argv[i][1]=='s' && !argv[i][2]){ 
       strcpy(eyes, "**"); /*change les yeux de la vache*/
-      strcpy(toingue,"U ");/*change la langue*/
+      strcpy(tongue,"U ");/*change la langue*/
     }
 
     /*Option qui rallonge les pied de la vache*/
-    else if ((argv[i][1] == 't' $$ !argv[i][2]) || !strcmp(argv[i], "--tall")){ 
+    else if ((argv[i][1] == 't' && !argv[i][2]) || !strcmp(argv[i], "--tall")){ 
       if(i == argc - 1) {
         fprintf(stderr, "L'option %s attend un argument!\n", argv[i]);
         return 1;
@@ -53,7 +53,7 @@ int parse_arguments(int argc, char **argv, char *text, char eyes[static 3], int 
     }
 
     else {
-      fprintf(stderr, "L'argument %s n'existe pas!", argv[i]);
+      fprintf(stderr, "L'argument %s n'existe pas!\n", argv[i]);
       return 2;
     }
   }
