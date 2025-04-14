@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+
+#define NB_FRAMES 7
+#define LINE_PER_FRAMES 6
 void update () { 
     printf ( "\033[H\033[J" ); 
 }
@@ -10,29 +13,70 @@ void gotoxy ( int x , int y ) {
     printf ( "\033[%d;%dH" ,x , y ); 
 }
 
-char *noyade[] = {
-"   (__) \n\
-        (oo)\n\
- /-------\\/\n\
-/ |     ||\n\
-*  ||----||\n\
-  ~~    ~~"
-};
+char *noyade[NB_FRAMES][LINE_PER_FRAMES] = {{
+"           (__) ",
+"           (oo)",
+"    /-------\\/",
+"   / |     ||",
+"  *  ||----||",
+"     ~~    ~~"
+},{
+"           (__) ",
+"           (oo)",
+"    /-------\\/",
+"   / |     ||",
+"  *  ||----||",
+"ccccccccccccccccc"
+},{
+"           (__) ",
+"           (oo)",
+"    /-------\\/",
+"   / |     ||",
+"ccccccccccccccccc",
+" "
+},{
+"           (__) ",
+"           (oo)",
+"    /-------\\/",
+"ccccccccccccccccc",
+"",
+" "
+},{
+"           (__) ",
+"           (oo)",
+"ccccccccccccccccc",
+" ",
+" ",
+" "
+},{
+"           (__) ",
+"ccccccccccccccccc",
+" ",
+" ",
+" ",
+" "
+},{ 
+"ccccccccccccccccc",
+" ",
+" ",
+" ",
+" ",
+" "
+}};
 
-void affiche_vache(char **anim, int x, int y){
-    for (int i = 0; &anim[i]; i++){
-        gotoxy(x,y);
-        for (int j = 0; &anim[i][j]; j++){
-            printf("%c", anim[i][j]);
-        }
+void position(char **vache, int x, int y){
+    for (int i = 0; i<LINE_PER_FRAMES; i++){
+        gotoxy(x+i+1,y);
+        printf("%s", vache[i]);
+        printf("\n");
     }
 }
 
 int main (){
-    for (int i = 0; i<10 ; i++){
-        gotoxy(i,i*2);
-        affiche_vache(noyade, 100, 100);
-        usleep(100000);
+    update();
+    for (int i = 0; i<NB_FRAMES; i++){
+        position(noyade[i], 3, 10);
+        usleep(500000);
         update();
     }
     return 0;
