@@ -17,7 +17,7 @@ test: $(BIN)test.o $(BIN)parser.o
 	$(CC) -o $@ $^
 
 
-newcow: $(BIN)newcow.o $(BIN)parser.o
+newcow: $(BIN)newcow.o $(BIN)parser.o $(BIN)showcow.o
 	$(CC) -o $@ $^
 
 wildcow: $(BIN)wildcow.o $(BIN)parser.o

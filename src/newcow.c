@@ -2,21 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "parser.h"
-
-
-void affiche_vache(char *eyes, char *tongue, int legs, char *queue) {
-	printf("\
-   \\	^__^\n\
-    \\	(%s)\\_______\n\
-        (__)\\	    )\\/\\%s \n\
-	 %s||----w |\n\
-           ||     ||\n", eyes, queue, tongue);
-
-  for(int i = 0; i < legs; i++) {
-    printf("           ||     ||\n");
-  }
-
-}
+#include "showcow.h"
 
 /*fonction qui crée et affiche la bulle de texte*/
 void bulle (char *text){
