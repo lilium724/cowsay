@@ -4,18 +4,6 @@
 #include "parser.h"
 #include "showcow.h"
 
-/*fonction qui crée et affiche la bulle de texte*/
-void bulle (char *text){
-	char top[100]="";
-	char bot[100]="";
-	/*passe sur chaque caractère de la liste et rajoute les contours*/
-	for (int i = 0; strcmp(&text[i],"\0"); i++){
-		strcat(top, "_");
-		strcat(bot,"-");
-	}
-	/*affiche le texte avec le bon format*/
-	printf(" %s\n<%s>\n %s\n", top, text, bot);
-}
 
 int main(int argc, char **argv) {
 	char text[100] = "";

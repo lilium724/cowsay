@@ -4,7 +4,7 @@ CFLAGS=-Wall -g
 BIN=./bin/
 SRC=./src/
 
-all: newcow wildcow
+all: newcow wildcow reading_cow
 
 check: test
 	./test
@@ -21,6 +21,9 @@ newcow: $(BIN)newcow.o $(BIN)parser.o $(BIN)showcow.o
 	$(CC) -o $@ $^
 
 wildcow: $(BIN)wildcow.o $(BIN)parser.o
+	$(CC) -o $@ $^
+
+reading_cow: $(BIN)reading_cow.o $(BIN)showcow.o
 	$(CC) -o $@ $^
 
 $(BIN)%.o : $(SRC)%.c $(BIN)
