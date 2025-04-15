@@ -4,7 +4,7 @@
 #include "parser.h"
 #include "showcow.h"
 
-
+/*affiche la vache*/
 int main(int argc, char **argv) {
 	char text[100] = "";
   char eyes[3] = "00";

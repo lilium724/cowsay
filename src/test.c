@@ -2,6 +2,8 @@
 #include <string.h>
 #include "parser.h"
 
+/*taite les options entrée en paramètre lorsque l'on lance le programe ./newcow
+et permet l'affichage voule de la vache*/
 int test_parser(int argc, char **argv, char *text, char *eyes, int legs, char *tongue, char *queue) {
   char gText[100] = "";
   char gEyes[3] = "";
@@ -35,17 +37,22 @@ int test_parser(int argc, char **argv, char *text, char *eyes, int legs, char *t
   return errors;
 }
 
+//AJOUTER LES TESTS ICI
+//char *argv_2[] = {"nom_du_programme", "arg1", "arg2", ...};
+//errors += test_parser(taille_de_argv_2, argv_2, "Resultat attendu pour text", "resultat attendu pour eyes", ...);
+//(laissez NULL pour le string ou -1 pour un int si vous voulez skip le test pour cette valeur)
 int main() {
   puts("Testing parser.c...");
   int errors = 0;
 
-  char *argv_1[] = {"", "Hello", "World"};
-  errors += test_parser(3, argv_1, "Hello World", NULL, -1, NULL, NULL);
+  char *argv[10] = {"newcow"};
 
-  //AJOUTER LES TESTS ICI
-  //char *argv_2[] = {"nom_du_programme", "arg1", "arg2", ...};
-  //errors += test_parser(taille_de_argv_2, argv_2, "Resultat attendu pour text", "resultat attendu pour eyes", ...);
-  //(laissez NULL pour le string ou -1 pour un int si vous voulez skip le test pour cette valeur)
+  argv[1] = "Hello"; argv[2] = "World";
+  errors += test_parser(3, argv, "Hello World", NULL, -1, NULL, NULL);
+  argv[1] = "-e"; argv[2] = "ee"; argv[3] = "salut";
+  errors += test_parser(4, argv, "salut", "ee", -1, NULL, NULL);
+
+
   if(!errors) {
     puts("All good!");
   }

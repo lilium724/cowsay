@@ -2,17 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include "showcow.h"
 
+/*Variables correspondant au nombre de frame de l'animation voulue et 
+à la résolution du rendu*/
 #define NB_FRAMES 7
 #define LINE_PER_FRAMES 6
-void update () { 
-    printf ( "\033[H\033[J" ); 
-}
 
-void gotoxy ( int x , int y ) { 
-    printf ( "\033[%d;%dH" ,x , y ); 
-}
-
+/*frames de l'animation d'une vache qui se noie*/
 char *noyade[NB_FRAMES][LINE_PER_FRAMES] = {{
 "           (__) ",
 "           (oo)",
@@ -64,6 +61,8 @@ char *noyade[NB_FRAMES][LINE_PER_FRAMES] = {{
 " "
 }};
 
+/*affiche une frame en positionnant le 
+coin haut gauche de l'image aux coordonée x et y entrée en paramètre*/
 void position(char **vache, int x, int y){
     for (int i = 0; i<LINE_PER_FRAMES; i++){
         gotoxy(x+i+1,y);

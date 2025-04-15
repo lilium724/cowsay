@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
+/*met le texte affichée dans une bulle*/
 void bulle (char *text){
 	char top[100]="";
 	char bot[100]="";
@@ -13,6 +14,7 @@ void bulle (char *text){
 	printf(" %s\n<%s>\n %s\n", top, text, bot);
 }
 
+/*permet d'afficher la vache*/
 void affiche_vache(char *eyes, char *tongue, int legs, char *queue) {
 	printf("\
    \\	^__^\n\
@@ -26,6 +28,7 @@ void affiche_vache(char *eyes, char *tongue, int legs, char *queue) {
   }
 
 }
+
 
 void update() {
   printf("\033[H\033[J");
