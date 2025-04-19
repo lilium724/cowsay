@@ -15,13 +15,22 @@ void bulle (char *text){
 }
 
 /*permet d'afficher la vache*/
-void affiche_vache(char *eyes, char *tongue, int legs, char *queue) {
-	printf("\
+void affiche_vache(char *eyes, char *tongue, int legs, int queue) {
+  printf("\
    \\	^__^\n\
     \\	(%s)\\_______\n\
-        (__)\\	    )\\/\\%s \n\
+        (__)\\	    )\\/\\", eyes);
+
+  for(int i = 0; i < queue; i++) {
+    if(i%2)
+      printf("\\");
+    else
+      printf("/");
+  }
+  puts("");
+  printf("\
 	 %s||----w |\n\
-           ||     ||\n", eyes, queue, tongue);
+           ||     ||\n", tongue);
 
   for(int i = 0; i < legs; i++) {
     printf("           ||     ||\n");

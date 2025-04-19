@@ -2,7 +2,7 @@
 
 void bulle(char *text);
 
-void affiche_vache(char *eyes, char *tongue, int legs, char *queue);
+void affiche_vache(char *eyes, char *tongue, int legs, int queue);
 
 void update();
 

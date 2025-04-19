@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h> /*ajout de stdlib pour utiliser atoi*/
 
-int parse_arguments(int argc, char **argv, char *text, char eyes[static 3], int *legs, char *tongue, char *queue) {
+int parse_arguments(int argc, char **argv, char *text, char eyes[static 3], int *legs, char *tongue, int *queue) {
   int i;
   for(i = 1; i < argc; i++) {
     if(argv[i][0] != '-')
@@ -43,12 +43,7 @@ int parse_arguments(int argc, char **argv, char *text, char eyes[static 3], int 
         return 1;
       }
 
-      for (int y = 0; y<atoi(argv[i+1]); y++){
-        if (y%2 == 1)
-          strcat(queue,"\\");
-        else
-          strcat(queue, "/");
-      }
+      *queue = atoi(argv[i+1]);
       i++;
     }
 

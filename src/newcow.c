@@ -10,8 +10,8 @@ int main(int argc, char **argv) {
   char eyes[3] = "00";
 	int legs = 0;
 	char tongue[3]="  ";
-	char queue[100]="";
-	int ret_val = parse_arguments(argc, argv, text, eyes, &legs, tongue, queue);
+	int queue = 0;
+	int ret_val = parse_arguments(argc, argv, text, eyes, &legs, tongue, &queue);
 	if (ret_val == 0){
 		bulle(text); /*affiche la bulle avec le texte*/
 		affiche_vache(eyes, tongue, legs, queue);
