@@ -60,10 +60,10 @@ int parse_arguments(int argc, char **argv, Parameters *param) {
   }
 
   /*Le reste des arguments est traité comme du texte*/
-  for(;i < argc; i++) {
+  for(;i < argc-1; i++) {
     strcat(param->text, argv[i]);
-    if(i < argc - 1)
-      strcat(param->text, " ");
+    strcat(param->text, " ");
   }
+  strcat(param->text, argv[i]);
   return 0;  
 }
