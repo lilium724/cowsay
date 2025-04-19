@@ -1,27 +1,28 @@
 #include <stdio.h>
 #include <string.h>
+#include "showcow.h"
 
 /*met le texte affichée dans une bulle*/
-void bulle (char *text){
+void bulle (Parameters *param){
 	char top[100]="";
 	char bot[100]="";
 	/*passe sur chaque caractère de la liste et rajoute les contours*/
-	for (int i = 0; text[i]; i++){
+	for (int i = 0; param->text[i]; i++){
 		strcat(top, "_");
 		strcat(bot,"-");
 	}
 	/*affiche le texte avec le bon format*/
-	printf(" %s\n<%s>\n %s\n", top, text, bot);
+	printf(" %s\n<%s>\n %s\n", top, param->text, bot);
 }
 
 /*permet d'afficher la vache*/
-void affiche_vache(char *eyes, char *tongue, int legs, int queue) {
+void affiche_vache(Parameters *param) {
   printf("\
    \\	^__^\n\
     \\	(%s)\\_______\n\
-        (__)\\	    )\\/\\", eyes);
+        (__)\\	    )\\/\\", param->eyes);
 
-  for(int i = 0; i < queue; i++) {
+  for(int i = 0; i < param->tail; i++) {
     if(i%2)
       printf("\\");
     else
@@ -30,9 +31,9 @@ void affiche_vache(char *eyes, char *tongue, int legs, int queue) {
   puts("");
   printf("\
 	 %s||----w |\n\
-           ||     ||\n", tongue);
+           ||     ||\n", param->tongue);
 
-  for(int i = 0; i < legs; i++) {
+  for(int i = 0; i < param->legs; i++) {
     printf("           ||     ||\n");
   }
 

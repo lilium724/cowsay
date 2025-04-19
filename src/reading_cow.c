@@ -14,23 +14,23 @@ int main(int argc, char **argv) {
     fprintf(stderr, "%s n'a pas pu être ouvert en mode lecture!", argv[1]);
     return 2;
   }
+  Parameters param = default_parameters();
 
-  char tongue[3] = "  ";
-  fscanf(f, "%c", tongue);
-  char text[100] = "";
+  fscanf(f, "%c", param.tongue);
+
   while(!feof(f)) {
-    if(tongue[0] == '\n') {
-      fscanf(f, "%c", tongue);
+    if(param.tongue[0] == '\n') {
+      fscanf(f, "%c", param.tongue);
       continue;
     }
     update();
-    bulle(text);
-    affiche_vache("00", tongue, 0, 0);
-    strncat(text, tongue, 1);
+    bulle(&param);
+    affiche_vache(&param);
+    strncat(param.text, param.tongue, 1);
     usleep(100000);
-    fscanf(f, "%c", tongue);
+    fscanf(f, "%c", param.tongue);
   }
   update();
-  bulle(text);
-  affiche_vache("00", "  ", 0, 0);
+  bulle(&param);
+  affiche_vache(&param);
 }

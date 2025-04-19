@@ -1,8 +1,14 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h> /*ajout de stdlib pour utiliser atoi*/
+#include "parser.h"
 
-int parse_arguments(int argc, char **argv, char *text, char eyes[static 3], int *legs, char *tongue, int *queue) {
+Parameters default_parameters() {
+  Parameters def = {DEF_TEXT, DEF_EYES, DEF_TONGUE, DEF_LEGS, DEF_TAIL};
+  return def;
+}
+
+int parse_arguments(int argc, char **argv, Parameters *param) {
   int i;
   for(i = 1; i < argc; i++) {
     if(argv[i][0] != '-')
@@ -15,15 +21,15 @@ int parse_arguments(int argc, char **argv, char *text, char eyes[static 3], int 
         return 1;
       }
           
-      strncpy(eyes, argv[i+1], 2);
-      eyes[3] = 0;
+      strncpy(param->eyes, argv[i+1], 2);
+      param->eyes[2] = 0;
       i++;
     }
 
     /*Option pour "Makes the cow appear thoroughly stoned."*/
     else if(argv[i][1]=='s' && !argv[i][2]){ 
-      strcpy(eyes, "**"); /*change les yeux de la vache*/
-      strcpy(tongue,"U ");/*change la langue*/
+      strcpy(param->eyes, "**"); /*change les yeux de la vache*/
+      strcpy(param->tongue,"U ");/*change la langue*/
     }
 
     /*Option qui rallonge les pied de la vache*/
@@ -32,7 +38,7 @@ int parse_arguments(int argc, char **argv, char *text, char eyes[static 3], int 
         fprintf(stderr, "L'option %s attend un argument!\n", argv[i]);
         return 1;
       }
-      *legs = atoi(argv[i+1]); 
+      param->legs = atoi(argv[i+1]); 
       i++;
     }
 
@@ -43,21 +49,21 @@ int parse_arguments(int argc, char **argv, char *text, char eyes[static 3], int 
         return 1;
       }
 
-      *queue = atoi(argv[i+1]);
+      param->tail = atoi(argv[i+1]);
       i++;
     }
 
     else {
-      fprintf(stderr, "L'argument %s n'existe pas!\n", argv[i]);
+      fprintf(stderr, "L'option %s n'existe pas!\n", argv[i]);
       return 2;
     }
   }
 
   /*Le reste des arguments est traité comme du texte*/
   for(;i < argc; i++) {
-    strcat(text, argv[i]);
+    strcat(param->text, argv[i]);
     if(i < argc - 1)
-      strcat(text, " ");
+      strcat(param->text, " ");
   }
   return 0;  
 }

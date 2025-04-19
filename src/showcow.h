@@ -1,8 +1,9 @@
 #pragma once
+#include "parser.h"
 
-void bulle(char *text);
+void bulle(Parameters *param);
 
-void affiche_vache(char *eyes, char *tongue, int legs, int queue);
+void affiche_vache(Parameters *param);
 
 void update();
 

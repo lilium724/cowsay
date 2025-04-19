@@ -6,15 +6,11 @@
 
 /*affiche la vache*/
 int main(int argc, char **argv) {
-	char text[100] = "";
-  char eyes[3] = "00";
-	int legs = 0;
-	char tongue[3]="  ";
-	int queue = 0;
-	int ret_val = parse_arguments(argc, argv, text, eyes, &legs, tongue, &queue);
+	Parameters param = default_parameters();
+	int ret_val = parse_arguments(argc, argv, &param);
 	if (ret_val == 0){
-		bulle(text); /*affiche la bulle avec le texte*/
-		affiche_vache(eyes, tongue, legs, queue);
+		bulle(&param); /*affiche la bulle avec le texte*/
+		affiche_vache(&param);
 	}
 	return ret_val;
 }

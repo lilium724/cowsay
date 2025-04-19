@@ -4,33 +4,29 @@
 
 /*taite les options entrée en paramètre lorsque l'on lance le programe ./newcow
 et permet l'affichage voule de la vache*/
-int test_parser(int argc, char **argv, char *text, char *eyes, int legs, char *tongue, int queue) {
-  char gText[100] = "";
-  char gEyes[3] = "";
-  char gTongue[3] = "";
-  int gLegs;
-  int gQueue = 0;
+int test_parser(int argc, char **argv, char *text, char *eyes, int legs, char *tongue, int tail) {
+  Parameters param = default_parameters();
   int errors = 0;
-  parse_arguments(argc, argv, gText, gEyes, &gLegs, gTongue, &gQueue);
+  parse_arguments(argc, argv, &param);
 
-  if(text && strcmp(gText, text)) {
-    printf("Expected\n %s\nGot\n%s\n", text, gText);
+  if(text && strcmp(param.text, text)) {
+    printf("Expected\n %s\nGot\n%s\n", text, param.text);
     errors++;
   }
-  if(eyes && strcmp(gEyes, eyes)) {
-    printf("Expected %s, got %s\n", eyes, gEyes);
+  if(eyes && strcmp(param.eyes, eyes)) {
+    printf("Expected %s, got %s\n", eyes, param.eyes);
     errors++;
   }
-  if((legs >= 0) && legs != gLegs) {
-    printf("Expected %d, got %d\n", legs, gLegs);  
+  if((legs >= 0) && legs != param.legs) {
+    printf("Expected %d, got %d\n", legs, param.legs);  
     errors++;
   }
-  if(tongue && strcmp(gTongue, tongue)) {
-    printf("Expected %s, got %s\n", tongue, gTongue);
+  if(tongue && strcmp(param.tongue, tongue)) {
+    printf("Expected %s, got %s\n", tongue, param.tongue);
     errors++;
   }
-  if((queue >= 0) && queue != gQueue) {
-    printf("Expected %d, got %d\n", queue, gQueue);
+  if((tail >= 0) && tail != param.tail) {
+    printf("Expected %d, got %d\n", tail, param.tail);
     errors++;
   }
 
