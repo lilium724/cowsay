@@ -25,12 +25,12 @@ int main(int argc, char **argv) {
     }
     update();
     bulle(text);
-    affiche_vache("00", tongue, 0, "");
+    affiche_vache("00", tongue, 0, 0);
     strncat(text, tongue, 1);
     usleep(100000);
     fscanf(f, "%c", tongue);
   }
   update();
   bulle(text);
-  affiche_vache("00", "  ", 0, "");
+  affiche_vache("00", "  ", 0, 0);
 }
