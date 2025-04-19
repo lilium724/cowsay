@@ -1,9 +1,10 @@
 CC=clang
 CFLAGS=-Wall -g
-.PHONY: default clean check
+.PHONY: default clean check all
 BIN=./bin/
 SRC=./src/
 
+default: all
 all: newcow wildcow reading_cow
 
 check: test
@@ -26,7 +27,7 @@ wildcow: $(BIN)wildcow.o $(BIN)parser.o $(BIN)showcow.o
 reading_cow: $(BIN)reading_cow.o $(BIN)showcow.o
 	$(CC) -o $@ $^
 
-$(BIN)%.o : $(SRC)%.c $(BIN)
+$(BIN)%.o : $(SRC)%.c | $(BIN)
 	$(CC) $(CFLAGS) -c -o $@ $< 
 
 clean:
