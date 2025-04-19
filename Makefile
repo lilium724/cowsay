@@ -32,5 +32,5 @@ $(BIN)%.o : $(SRC)%.c | $(BIN)
 
 clean:
 	-@rm -f $(BIN)*
-	-@rm -f newcow
+	-@rm -f newcow wildcow reading_cow
 
