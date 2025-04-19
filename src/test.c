@@ -2,6 +2,14 @@
 #include <string.h>
 #include "parser.h"
 
+void print_command_line(int argc, char **argv) {
+  fprintf(stderr, "Error with command: ");
+  for(int i = 0; i < argc; i++) {
+    fprintf(stderr, "%s ", argv[i]);
+  }
+  fprintf(stderr, "\n");
+}
+
 /*taite les options entrée en paramètre lorsque l'on lance le programe ./newcow
 et permet l'affichage voule de la vache*/
 int test_parser(int argc, char **argv, char *text, char *eyes, int legs, char *tongue, int tail) {
@@ -10,28 +18,34 @@ int test_parser(int argc, char **argv, char *text, char *eyes, int legs, char *t
   parse_arguments(argc, argv, &param);
 
   if(text && strcmp(param.text, text)) {
-    printf("Expected\n %s\nGot\n%s\n", text, param.text);
+    print_command_line(argc, argv);
+    printf("text: Expected\n %s\nGot\n%s\n", text, param.text);
     errors++;
   }
   if(eyes && strcmp(param.eyes, eyes)) {
-    printf("Expected %s, got %s\n", eyes, param.eyes);
+    print_command_line(argc, argv);
+    printf("eyes: Expected %s, got %s\n", eyes, param.eyes);
     errors++;
   }
   if((legs >= 0) && legs != param.legs) {
-    printf("Expected %d, got %d\n", legs, param.legs);  
+    print_command_line(argc, argv);
+    printf("legs: Expected %d, got %d\n", legs, param.legs);  
     errors++;
   }
   if(tongue && strcmp(param.tongue, tongue)) {
-    printf("Expected %s, got %s\n", tongue, param.tongue);
+    print_command_line(argc, argv);
+    printf("tongue: Expected %s, got %s\n", tongue, param.tongue);
     errors++;
   }
   if((tail >= 0) && tail != param.tail) {
-    printf("Expected %d, got %d\n", tail, param.tail);
+    print_command_line(argc, argv);
+    printf("tail: Expected %d, got %d\n", tail, param.tail);
     errors++;
   }
 
   return errors;
 }
+
 
 //AJOUTER LES TESTS ICI
 //char *argv_2[] = {"nom_du_programme", "arg1", "arg2", ...};
@@ -54,7 +68,7 @@ int main() {
   errors += test_parser(3, argv, NULL, NULL, -1, NULL, 10);
 
   argv[1] = "hello"; argv[2] = "-e"; argv[3] = "00";
-  errors += test_parser(4, argv, "hello -e 00", "", -1, NULL, -1);
+  errors += test_parser(4, argv, "hello -e 00", DEF_EYES, -1, NULL, -1);
 
   if(!errors) {
     puts("All unit tests passed!");
