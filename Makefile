@@ -5,7 +5,7 @@ BIN=./bin/
 SRC=./src/
 
 default: all
-all: newcow wildcow reading_cow
+all: newcow wildcow reading_cow tamagochi
 
 check: test
 	./test
@@ -27,10 +27,13 @@ wildcow: $(BIN)wildcow.o $(BIN)parser.o $(BIN)showcow.o
 reading_cow: $(BIN)reading_cow.o $(BIN)showcow.o $(BIN)parser.o
 	$(CC) -o $@ $^
 
+tamagochi: $(BIN)tamagochi.o $(BIN)interface.o $(BIN)showcow.o $(BIN)parser.o
+	$(CC) -o $@ $^
+
 $(BIN)%.o : $(SRC)%.c | $(BIN)
 	$(CC) $(CFLAGS) -c -o $@ $< 
 
 clean:
 	-@rm -f $(BIN)*
-	-@rm -f newcow wildcow reading_cow
+	-@rm -f newcow wildcow reading_cow tamagochi
 
